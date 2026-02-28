@@ -12,7 +12,13 @@ const TIMEZONE = core.getInput('timezone') || '+8';
 
 async function parseFeed(feedUrl) {
   try {
-    const response = await axios.get(feedUrl, { timeout: 5000 });
+    const response = await axios.get(feedUrl, {
+      timeout: 15000,
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'application/rss+xml, application/xml, text/xml;q=0.9'
+      }
+    });
     const $ = cheerio.load(response.data, { xmlMode: true });
     const posts = [];
 
