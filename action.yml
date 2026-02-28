@@ -17,6 +17,10 @@ inputs:
     description: '日期格式'
     required: false
     default: 'YYYY-MM-DD HH:mm'
+  timezone: 
+    description: '时区，例如东八区为+8'
+    required: false
+    default: '+8'
 
 runs:
   using: 'node20'

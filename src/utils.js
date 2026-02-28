@@ -3,9 +3,13 @@ import path from 'path';
 import { Octokit } from '@octokit/rest';
 import * as github from '@actions/github';
 import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc.js';
 
-export function formatDate(dateString, format) {
-  return dayjs(dateString).format(format);
+dayjs.extend(utc);
+
+export function formatDate(dateString, format, tz = '+8') {
+  const offset = parseInt(tz, 10);
+  return dayjs.utc(dateString).utcOffset(offset).format(format);
 }
 
 export function logger(level, message, ...args) {

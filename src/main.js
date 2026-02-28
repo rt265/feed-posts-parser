@@ -8,6 +8,7 @@ const RETRY_TIMES = core.getInput('retry_times') || 3;
 const POSTS_COUNT = core.getInput('posts_count') || 2;
 const DATE_FORMAT = core.getInput('date_format') || 'YYYY-MM-DD HH:mm:ss';
 const CONCURRENCY_LIMIT = 10;
+const TIMEZONE = core.getInput('timezone') || '+8';
 
 async function parseFeed(feedUrl) {
   try {
@@ -46,7 +47,7 @@ async function parseFeed(feedUrl) {
         publishedDateStr = $item.find('published').first().text();
       }
 
-      const formattedPublished = publishedDateStr ? formatDate(publishedDateStr, DATE_FORMAT) : '';
+      const formattedPublished = publishedDateStr ? formatDate(publishedDateStr, DATE_FORMAT, TIMEZONE) : '';
       logger('info', `Extracted - Title: ${title}, Link: ${link}, Published: ${formattedPublished}`);
 
       if (title && link) {
