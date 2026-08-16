@@ -2,6 +2,8 @@
 
 解析友链 RSS 地址，获取最新发布的文章，并将其转换为统一的格式，方便聚合和展示。
 
+添加了更加细化的 Headers 并透明标注 `(feed-post-parser/1.0; +https://github.com/xaoxuu/feed-posts-parser)`，可用于 WAF 放行。
+
 ## 项目简介
 
 `feed-post-parser` 是一个用于从 Issue 中解析 RSS/Atom/JSON Feed 地址并填充数据回 Issue 的工具，旨在从友链或博客订阅中提取最新的文章信息。它可以帮助您：
